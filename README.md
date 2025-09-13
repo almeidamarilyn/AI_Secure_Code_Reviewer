@@ -1,34 +1,97 @@
-# AI-Powered Secure Code Reviewer (Starter)
+# 🔒 AI-Powered Secure Code Reviewer
 
-**Goal:** Run free static analyzers (Semgrep, Bandit, Gitleaks) and apply an **AI triage layer** (local CPU) to rank findings, reduce noise, and suggest fixes. Use it locally via **pre-commit** and in CI via **GitHub Actions**.
+An open-source **DevSecOps tool** that combines traditional static analysis (Semgrep, Bandit, Gitleaks) with an **AI triage layer** to make secure code reviews faster and less noisy.  
 
-## Quickstart
+This project helps developers and security engineers automatically detect vulnerabilities, secrets, and insecure patterns — then ranks, explains, and suggests fixes with AI.
+
+---
+
+## 🧐 Why this project?
+
+Software supply chain security has become one of the **biggest risks** for organizations. Traditional static analyzers are powerful, but they:
+
+- Produce **lots of false positives**
+- Don’t explain findings in developer-friendly language
+- Lack **contextual severity ranking**
+
+This project combines proven open-source analyzers with an **AI layer** that:
+- Ranks findings (HIGH / MEDIUM / LOW)
+- Explains why an issue matters
+- Suggests practical fixes
+
+The result → **developers fix issues earlier, security teams trust the results, and CI/CD pipelines stay fast**.
+
+---
+
+## ⚙️ Architecture
+
+```text
+                ┌─────────────┐
+                │   Source    │
+                │   Codebase  │
+                └──────┬──────┘
+                       │
+        ┌──────────────┼──────────────┐
+        │              │              │
+   ┌────▼────┐    ┌────▼────┐    ┌────▼────┐
+   │ Semgrep │    │ Bandit  │    │ Gitleaks│
+   └────┬────┘    └────┬────┘    └────┬────┘
+        │              │              │
+        └─────── Findings (JSON) ─────┘
+                       │
+               ┌───────▼────────┐
+               │ Normalization  │
+               │  Common Schema │
+               └───────┬────────┘
+                       │
+               ┌───────▼────────┐
+               │ AI Triage Layer│
+               │  Heuristics/LLM│
+               └───────┬────────┘
+                       │
+              ┌────────▼─────────┐
+              │ secure_review.md │
+              │  (final report)  │
+              └──────────────────┘
+
+```
+---
+
+## ✨ Features
+
+- 🧰 **Static Analysis Stack**:
+  - **Semgrep** → language-aware pattern detection (e.g., OWASP Top 10)
+  - **Bandit** → Python security checks
+  - **Gitleaks** → Secret/key detection
+- 🤖 **AI Triage Layer**:
+  - Classifies findings as **HIGH / MED / LOW**
+  - Reduces false positives and noise
+  - Explains *why* an issue matters and suggests fixes
+- 📄 **Unified Report**:
+  - Generates a single `secure_review.md`
+  - Highlights **AI-ranked HIGH issues**
+  - Non-zero exit code if blocking issues are found (CI/CD friendly)
+- ⚡ **Fast & Flexible**:
+  - Run locally via CLI or Git pre-commit hook
+  - Integrate into CI/CD (GitHub Actions included)
+
+---
+
+## 🚀 Quickstart
 
 ```bash
+# 1. Setup virtual environment
 python -m venv .venv && source .venv/bin/activate
+
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# Optional: install CLIs if preferred
-# macOS: brew install semgrep gitleaks
-# Linux: use the package manager or pip equivalents
+# 3. Run a full scan
+PYTHONPATH=. python src/cli.py --target src
 
-# Run once
-python src/cli.py
-
-# Install pre-commit hook
-pip install pre-commit
-pre-commit install
+# 4. Optional: Install analyzers via CLI
+# macOS
+brew install semgrep gitleaks
+# Linux
+apt install semgrep gitleaks  # or use pip equivalents
 ```
-
-## What it does
-1. Runs **Semgrep**, **Bandit**, **Gitleaks** and collects findings (JSON).
-2. Normalizes findings into a common schema.
-3. Runs **AI triage** to re-label noise / rank severity (CPU-friendly; falls back to heuristics if model not available).
-4. Produces `secure_review.md` and a non-zero exit code if HIGH issues found.
-
-## CI (GitHub Actions)
-Push this repo to GitHub; the included workflow blocks PRs with HIGH issues.
-
-## Notes
-- The AI layer ships with a **safe fallback** (heuristics) so it always works. To enable HF models, ensure internet access on first run (models cached locally).
-- You can add custom Semgrep rules in `rules/`.
