@@ -79,6 +79,8 @@ def main():
     highs = [f for f in findings if f.get("ai_severity") == "HIGH"]
     print(f"[green]Report written to secure_review.md[/green]")
     print(f"[bold yellow]AI-triaged findings: {len(findings)} | HIGH: {len(highs)}[/bold yellow]")
+    with open("findings.json","w") as w:
+    json.dump(findings, w, indent=2)
     sys.exit(1 if highs else 0)
     sev_rank = {"HIGH":3,"MED":2,"LOW":1,"FP":0}
     findings.sort(key=lambda f: sev_rank.get(f.get("ai_severity","LOW"),1), reverse=True)
