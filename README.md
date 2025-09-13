@@ -83,13 +83,18 @@ The result → **developers fix issues earlier, security teams trust the results
 # 1. Setup virtual environment
 python -m venv .venv && source .venv/bin/activate
 
-# 2. Install dependencies
+# 2. Install dependencies (includes analyzers, FastAPI, uvicorn, etc.)
 pip install -r requirements.txt
 
-# 3. Run a full scan
+# 3. Run a full scan (outputs semgrep.json, bandit.json, gitleaks.json, secure_review.md)
 PYTHONPATH=. python src/cli.py --target src
 
-# 4. Optional: Install analyzers via CLI
+# 4. Launch the web dashboard (view findings in browser)
+PYTHONPATH=. python -m uvicorn src.web.app:app --reload --host 127.0.0.1 --port 8000
+# Visit http://127.0.0.1:8000 for the dashboard
+# Visit http://127.0.0.1:8000/api/findings for raw JSON
+
+# 5. (Optional) Install analyzers as CLI tools
 # macOS
 brew install semgrep gitleaks
 # Linux
