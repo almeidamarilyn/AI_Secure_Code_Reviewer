@@ -1,0 +1,41 @@
+:root{
+  --bg:#0b0f14;
+  --card:#10161d;
+  --text:#e6edf3;
+  --muted:#9fb0c0;
+  --border:#223041;
+  --red:#ff5a5f; --amber:#ffb020; --green:#22c55e;
+}
+*{ box-sizing: border-box; }
+body{
+  margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg); color:var(--text);
+}
+header{
+  padding:20px; border-bottom:1px solid var(--border);
+  position:sticky; top:0; background:var(--bg);
+}
+h1{ margin:0 0 12px 0; font-size:22px; }
+.controls{ display:flex; gap:10px; flex-wrap:wrap; }
+select,input,button{
+  background:var(--card); color:var(--text); border:1px solid var(--border);
+  padding:8px 10px; border-radius:8px; outline:none;
+}
+button{ cursor:pointer; }
+main{ padding:16px; }
+table{
+  width:100%; border-collapse: collapse; background:var(--card);
+  border:1px solid var(--border); border-radius:12px; overflow:hidden;
+}
+thead th{
+  text-align:left; padding:12px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--border);
+}
+tbody td{ padding:12px; vertical-align: top; border-top:1px solid var(--border); }
+.snippet{
+  max-height:200px; overflow:auto; background:#0a0f14; padding:10px; border:1px solid var(--border); border-radius:8px;
+}
+.sev{ padding:3px 8px; border-radius:999px; font-weight:600; font-size:12px; }
+.sev-high{ background: color-mix(in oklab, var(--red) 20%, transparent); color:var(--red); border:1px solid var(--red); }
+.sev-med{ background: color-mix(in oklab, var(--amber) 20%, transparent); color:var(--amber); border:1px solid var(--amber); }
+.sev-low{ background: color-mix(in oklab, var(--green) 20%, transparent); color:var(--green); border:1px solid var(--green); }
+footer{ padding:14px; color:var(--muted); }
