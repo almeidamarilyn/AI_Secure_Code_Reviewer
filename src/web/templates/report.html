@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Secure Code Review Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link href="/static/styles.css" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <h1>Secure Code Review Dashboard</h1>
+    <div class="controls">
+      <select id="severity">
+        <option value="">All severities</option>
+        <option value="HIGH">HIGH</option>
+        <option value="MED">MED</option>
+        <option value="LOW">LOW</option>
+      </select>
+      <select id="tool">
+        <option value="">All tools</option>
+        <option value="semgrep">Semgrep</option>
+        <option value="bandit">Bandit</option>
+        <option value="gitleaks">Gitleaks</option>
+      </select>
+      <input id="search" placeholder="Search file/rule/message..."/>
+      <button id="export">Export JSON</button>
+    </div>
+  </header>
+
+  <main>
+    <table id="results">
+      <thead>
+        <tr>
+          <th>Severity</th>
+          <th>Tool</th>
+          <th>Rule</th>
+          <th>Message</th>
+          <th>File:Line</th>
+          <th>Explain (AI)</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </main>
+
+  <footer>
+    <small>Generated from semgrep.json, bandit.json, gitleaks.json at runtime.</small>
+  </footer>
+
+  <script>
+    const tbody = document.getElementById("tbody");
+    const severitySel = document.getElementById("severity");
+    const toolSel = document.getElementById("tool");
+    const searchInput = document.getElementById("search");
+    const exportBtn = document.getElementById("export");
+
+    let ALL = [];
+
+    function sevBadge(sev) {
+      const s = sev || "LOW";
+      return `<span class="sev sev-${s.toLowerCase()}">${s}</span>`;
+    }
+
+    function esc(s) {
+      return (s || "").toString().replace(/[&<>"'`]/g, c => (
+        { "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;","`":"&#96;" }[c]
+      ));
+    }
+
+    function rowHTML(f) {
+      const file = f.file ? `${f.file}:${f.start_line || "?"}` : "";
+      const code = f.code ? `<pre class="snippet">${esc(f.code).slice(0,800)}</pre>` : "";
+      const msg = esc(f.message || "");
+      const rule = esc(f.rule_id || "");
+      const explain = esc(f.ai_explanation || "");
+      return `
+        <tr>
+          <td>${sevBadge(f.ai_severity || f.severity)}</td>
+          <td>${esc(f.tool)}</td>
+          <td title="${rule}">${rule}</td>
+          <td title="${msg}">${msg}</td>
+          <td title="${file}">${esc(file)}</td>
+          <td>${explain}</td>
+          <td>${code}</td>
+        </tr>
+      `;
+    }
+
+    function matchesFilters(f) {
+      const sev = severitySel.value;
+      const tool = toolSel.value;
+      const q = searchInput.value.trim().toLowerCase();
+      if (sev && (f.ai_severity || f.severity) !== sev) return false;
+      if (tool && f.tool !== tool) return false;
+      if (q) {
+        const hay = [
+          f.file, f.rule_id, f.message, f.ai_explanation
+        ].map(x => (x || "").toLowerCase()).join(" ");
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    }
+
+    function render() {
+      const rows = ALL.filter(matchesFilters).map(rowHTML).join("");
+      tbody.innerHTML = rows || `<tr><td colspan="7" style="text-align:center">No results</td></tr>`;
+    }
+
+    async function load() {
+      const r = await fetch("/api/findings");
+      ALL = await r.json();
+      render();
+    }
+
+    severitySel.addEventListener("change", render);
+    toolSel.addEventListener("change", render);
+    searchInput.addEventListener("input", render);
+    exportBtn.addEventListener("click", () => {
+      window.location.href = "/api/findings";
+    });
+
+    load();
+  </script>
+</body>
+</html>
