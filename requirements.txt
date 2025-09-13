@@ -1,0 +1,6 @@
+rich
+pydantic
+semgrep
+bandit
+scikit-learn
+pre-commit

@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "private-key",
+  "Description": "Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+  "StartLine": 1,
+  "EndLine": 1,
+  "StartColumn": 1,
+  "EndColumn": 0,
+  "Match": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAgpAbWJ9RKds6kHyaDcYJc+UxGAtY3mCe6Du4elhtY6gf/5cd\nfnqhQPkszdTOP6qYTX+sNZg6bkhktyekhy8cI6ZllxVmCwGgNE1wPb0CW986UNzc\nvPwYTcYrA0dGPyzYuO/s08fo4hTyy3m6ONr4/IQBWSQcOlimLr+2EFkW4f+mzHtm\neySRwQNOfD3ev8qZCmepStxOCznABS6I1SVHxNeQ+rSlLePm3/QtKhWM8JYn3qmw\nLyXFlw87r3rz3kKw+cDtivFtq/kpm6bU3tcql+vwEpKX0ezNeHsbGspe6oIR6P7K\nueTVGSUCx1StkYo1w8VQf/uRvj+kUJUqtcVEGwIDAQABAoIBAFwNvKokUfZf8o+y\num9hpIKJIq8gOP05RHDawnvIYv/zpvPvGMV3MsB7rqJFG1H6Nr3VeZakCPZ+pjwY\ngEEr7vwXsuLuHG9AKzMVMkDlRYd/AT/IKP46A+y5/tOl6hpaxUbHKsQ627CjMnhS\nEAFMKmbnr4epFRnyLOEjG/u0xJR8PdJZDbCd56qUnLdM3f80bBOB+fhhQlGuYjoo\niIl/BeKP5IGuXY1sPKPwe66+QeA02acA8fJeuslwkhPPhLWQChLiz1zYfuWcJebC\ndLavMbJlr7u7WAk5B91mBginjdVI8S73HO1SBdad4H2NbkQcSy6tL3EdpViBwom5\n0fkCwpECgYEA9Jbi9oaWl9zMlsKzSSk8kybUOOuYteJUHCDP/5lzHPLe/dTQ2Xvc\nUzsx52ETkKbpucqzg3u9MCSZvDrcbCt+qzQI3cLb1oHw7PbAIcOuPjAQsZRb5m0L\nYJerSwZEdyL9/Joyb64U7m4ujAjUdxpA1ZhJ62X4n4Ut8DnJrMxlWzMCgYEAiKdp\nBfobs1xlyrY5mxmspe0SWmn7tI3WT4yeNlbZ8cTFDLzL/kpd0QSVPkV0OQdm9KFT\nAgcc61IS8y85T8vewaY+yfhoUchYeVl9iANSDWwqJezRyfv4JqzBf/bAeX7NCmkb\ngTjLQeVrfZ9v15uT86tHGuSyZLZLsBeAhySGM3kCgYAKesyOs4WQTC2X6A+2esXV\nqDw/lBie8muYKO/Ai9qayu0zAwNPzjbKeibROx+TexNYmo7Ge27HuUm8/uii2do7\ni6c1mTvCHR8tiAUDbVbx4y1T7n9hiBqMsPLt6/7S+/TV9eVjU5oh/SaRaW9xCvbs\nL/I628ujShmFyXQSq09McQKBgCZ135QkEVnIvolwAgSKFFJax9iUjZgCd3fKHtky\nVoK6G697D3rRWVgzjwGIsK5ATBS7ts4STGxanCS/fMTdnyMnc/KKLGogFe6JZlA6\nhwRqFe64mU7c0Lmp04f9XayUKIcuj+QtpN81/6vKjMLE8b4ZzZhfF2pK+EBmTPE8\nMV0ZAoGBAPKrBpeZuEmzwWg2u/1t4m3Mt2QKlSRmwxggJWf8dKBByl0/u7lQHS5n\nNWRygd5tp0J0ta1Z6jsDnAAexetnkqNKPlKVshYWl/uKxP5F1ru/85rdUuZyBGs2\nY6C4oS42n+oELm6ExiLstpKDH4KW4OP2QMzL7UMehrqwlfxDHVzq\n-----END RSA PRIVATE KEY-----",
+  "Secret": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAgpAbWJ9RKds6kHyaDcYJc+UxGAtY3mCe6Du4elhtY6gf/5cd\nfnqhQPkszdTOP6qYTX+sNZg6bkhktyekhy8cI6ZllxVmCwGgNE1wPb0CW986UNzc\nvPwYTcYrA0dGPyzYuO/s08fo4hTyy3m6ONr4/IQBWSQcOlimLr+2EFkW4f+mzHtm\neySRwQNOfD3ev8qZCmepStxOCznABS6I1SVHxNeQ+rSlLePm3/QtKhWM8JYn3qmw\nLyXFlw87r3rz3kKw+cDtivFtq/kpm6bU3tcql+vwEpKX0ezNeHsbGspe6oIR6P7K\nueTVGSUCx1StkYo1w8VQf/uRvj+kUJUqtcVEGwIDAQABAoIBAFwNvKokUfZf8o+y\num9hpIKJIq8gOP05RHDawnvIYv/zpvPvGMV3MsB7rqJFG1H6Nr3VeZakCPZ+pjwY\ngEEr7vwXsuLuHG9AKzMVMkDlRYd/AT/IKP46A+y5/tOl6hpaxUbHKsQ627CjMnhS\nEAFMKmbnr4epFRnyLOEjG/u0xJR8PdJZDbCd56qUnLdM3f80bBOB+fhhQlGuYjoo\niIl/BeKP5IGuXY1sPKPwe66+QeA02acA8fJeuslwkhPPhLWQChLiz1zYfuWcJebC\ndLavMbJlr7u7WAk5B91mBginjdVI8S73HO1SBdad4H2NbkQcSy6tL3EdpViBwom5\n0fkCwpECgYEA9Jbi9oaWl9zMlsKzSSk8kybUOOuYteJUHCDP/5lzHPLe/dTQ2Xvc\nUzsx52ETkKbpucqzg3u9MCSZvDrcbCt+qzQI3cLb1oHw7PbAIcOuPjAQsZRb5m0L\nYJerSwZEdyL9/Joyb64U7m4ujAjUdxpA1ZhJ62X4n4Ut8DnJrMxlWzMCgYEAiKdp\nBfobs1xlyrY5mxmspe0SWmn7tI3WT4yeNlbZ8cTFDLzL/kpd0QSVPkV0OQdm9KFT\nAgcc61IS8y85T8vewaY+yfhoUchYeVl9iANSDWwqJezRyfv4JqzBf/bAeX7NCmkb\ngTjLQeVrfZ9v15uT86tHGuSyZLZLsBeAhySGM3kCgYAKesyOs4WQTC2X6A+2esXV\nqDw/lBie8muYKO/Ai9qayu0zAwNPzjbKeibROx+TexNYmo7Ge27HuUm8/uii2do7\ni6c1mTvCHR8tiAUDbVbx4y1T7n9hiBqMsPLt6/7S+/TV9eVjU5oh/SaRaW9xCvbs\nL/I628ujShmFyXQSq09McQKBgCZ135QkEVnIvolwAgSKFFJax9iUjZgCd3fKHtky\nVoK6G697D3rRWVgzjwGIsK5ATBS7ts4STGxanCS/fMTdnyMnc/KKLGogFe6JZlA6\nhwRqFe64mU7c0Lmp04f9XayUKIcuj+QtpN81/6vKjMLE8b4ZzZhfF2pK+EBmTPE8\nMV0ZAoGBAPKrBpeZuEmzwWg2u/1t4m3Mt2QKlSRmwxggJWf8dKBByl0/u7lQHS5n\nNWRygd5tp0J0ta1Z6jsDnAAexetnkqNKPlKVshYWl/uKxP5F1ru/85rdUuZyBGs2\nY6C4oS42n+oELm6ExiLstpKDH4KW4OP2QMzL7UMehrqwlfxDHVzq\n-----END RSA PRIVATE KEY-----",
+  "File": "Downloads/celly.pem",
+  "SymlinkFile": "",
+  "Commit": "82a77696158f50ef63eca0ee01b7f2a6444cc01d",
+  "Entropy": 6.016446,
+  "Author": "Marilyn Almeida",
+  "Email": "almeidamarilyn@icloud.com",
+  "Date": "2024-04-17T02:39:15Z",
+  "Message": "Initial commit",
+  "Tags": [],
+  "Fingerprint": "82a77696158f50ef63eca0ee01b7f2a6444cc01d:Downloads/celly.pem:private-key:1"
+ }
+]
